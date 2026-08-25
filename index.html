@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Туған күнге шақыру </title>
+    <title>Туған күнге шақыру</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -69,13 +69,21 @@
         }
         .music-btn:active { transform: scale(0.95); }
 
-        /* Фото рамасы */
-        .photo-frame {
-            width: 190px;
-            height: 190px;
+        /* Екі фотоға арналған контейнер */
+        .photo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
             margin: 0 auto 20px;
+        }
+
+        /* Фото рамалары */
+        .photo-frame {
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            padding: 8px;
+            padding: 6px;
             background: linear-gradient(135deg, #ff9a9e, #fecfef);
             box-shadow: 0 8px 20px rgba(255, 154, 158, 0.4);
         }
@@ -171,7 +179,7 @@
             outline: none;
         }
 
-        /* Шарлар анимациясы (Balloon animation) */
+        /* Шарлар анимациясы */
         .balloon {
             position: fixed;
             bottom: -100px;
@@ -206,7 +214,7 @@
 </audio>
 
 <div class="card">
-    <div class="age-badge">👑 9-5 ЖАС 🎂</div>
+    <div class="age-badge">👑 5 ЖАС 🎂</div>
     <h1>Туған Күнге Шақыру!</h1>
 
     <!-- Музыка батырмасы -->
@@ -214,25 +222,30 @@
         🎵 <span id="musicText">Музыканы қосу</span>
     </button>
 
-    <!-- Сурет -->
-    <div class="photo-frame">
-        <img src="photo.jpg" alt="Бала суреті">
+    <!-- Екі фотосурет рамасы -->
+    <div class="photo-container">
+        <div class="photo-frame">
+            <img src="photo1.jpg" alt="Бала суреті 1">
+        </div>
+        <div class="photo-frame">
+            <img src="photo2.jpg" alt="Бала суреті 2">
+        </div>
     </div>
 
     <!-- Мәтін -->
     <div class="text-body">
         <p>Құрметті ағайын-туыс, бауырлар,<br>дос-жарандар мен кішкентай достар!</p>
         <p>Байлығымыз, ерке қыздарымыз</p>
-        <span class="child-name">Дария,Сания</span>
-        <p>толағай <strong> жасқа</strong> толып отыр! Осы қуанышты мерекеде ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!</p>
+        <span class="child-name">Дария мен Сания</span>
+        <p>толағай <strong>5 жасқа</strong> толып отыр! Осы қуанышты мерекеде ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!</p>
     </div>
 
-   <!-- Күні мен Мекенжайы -->
-<div class="info-card">
-    <div class="info-item">📅 <strong>Күні:</strong> 05 Қыркүйек 2026 жыл</div>
-    <div class="info-item">⏰ <strong>Уақыты:</strong> 17:00</div>
-    <div class="info-item">📍 <strong>Мекен-жайы:</strong> Сарқан қаласы,<br>Төлеген Тоқтаров, 39 үй</div>
-</div>
+    <!-- Күні мен Мекенжайы -->
+    <div class="info-card">
+        <div class="info-item">📅 <strong>Күні:</strong> 05 Қыркүйек 2026 жыл</div>
+        <div class="info-item">⏰ <strong>Уақыты:</strong> 17:00</div>
+        <div class="info-item">📍 <strong>Мекен-жайы:</strong> Сарқан қаласы,<br>Төлеген Тоқтаров, 39 үй</div>
+    </div>
 
     <!-- Таймер -->
     <div class="timer-title">Мерекеге қалды:</div>
@@ -292,7 +305,7 @@
     }
 
     // 2. Таймер (Мереке күні)
-    const eventDate = new Date("Oct 15, 2026 17:00:00").getTime();
+    const eventDate = new Date("Sep 5, 2026 17:00:00").getTime();
     setInterval(function() {
         const now = new Date().getTime();
         const diff = eventDate - now;
