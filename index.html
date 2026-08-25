@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Туған Күнге Шақыру — 5 Жасы</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 20px 10px;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #ffeff4 0%, #fff9e6 100%);
+            color: #4a4a4a;
+            text-align: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Негізгі карточка */
+        .card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 30px;
+            padding: 35px 20px;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.15);
+            border: 2px solid #ffccd5;
+            position: relative;
+            z-index: 2;
+        }
+
+        .age-badge {
+            background: #ff6b8b;
+            color: white;
+            font-family: 'Fredoka One', cursive;
+            font-size: 22px;
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 10px rgba(255, 107, 139, 0.3);
+        }
+
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 38px;
+            color: #ff477e;
+            margin: 5px 0 15px;
+            font-weight: 400;
+            text-shadow: 2px 2px 0px #ffccd5;
+        }
+
+        /* Музыка батырмасы */
+        .music-btn {
+            background: #ff6b8b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(255, 107, 139, 0.3);
+            transition: transform 0.2s;
+        }
+        .music-btn:active { transform: scale(0.95); }
+
+        /* Фото рамасы */
+        .photo-frame {
+            width: 190px;
+            height: 190px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            padding: 8px;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            box-shadow: 0 8px 20px rgba(255, 154, 158, 0.4);
+        }
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .text-body {
+            line-height: 1.8;
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .child-name {
+            font-family: 'Fredoka One', cursive;
+            font-size: 32px;
+            color: #ff477e;
+            display: block;
+            margin: 5px 0;
+            letter-spacing: 1px;
+        }
+
+        /* Ақпараттық блок */
+        .info-card {
+            background: #fff5f7;
+            border: 2px dashed #ff9a9e;
+            border-radius: 20px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .info-item { margin: 8px 0; font-size: 15px; }
+        .info-item strong { color: #ff477e; }
+
+        /* Таймер */
+        .timer-title { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 10px; }
+        .timer { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+        .timer-block { background: #ffe6ed; padding: 10px; border-radius: 14px; min-width: 60px; }
+        .timer-number { font-size: 20px; font-weight: 700; color: #ff477e; display: block; }
+        .timer-label { font-size: 10px; color: #888; text-transform: uppercase; }
+
+        /* Батырмалар */
+        .btn {
+            display: block;
+            width: 100%;
+            background: #ff6b8b;
+            color: white;
+            text-decoration: none;
+            padding: 13px;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 12px rgba(255, 107, 139, 0.25);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-2gis { background: #4dabf7; }
+
+        /* Байланыс телефоны */
+        .contacts-box { margin-bottom: 20px; }
+        .phone-btn {
+            display: inline-block;
+            background: #ffffff;
+            border: 2px solid #ff9a9e;
+            color: #ff477e;
+            padding: 8px 16px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        /* Сауалнама (RSVP) */
+        .rsvp-box {
+            background: #fff5f7;
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .rsvp-box h3 { text-align: center; color: #ff477e; margin-top: 0; font-size: 18px; font-family: 'Fredoka One', cursive; }
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-size: 13px; margin-bottom: 4px; color: #666; }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ffccd5;
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        /* Шарлар анимациясы (Balloon animation) */
+        .balloon {
+            position: fixed;
+            bottom: -100px;
+            opacity: 0.7;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatUp linear infinite;
+        }
+        .balloon::after {
+            content: "";
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 15px;
+            background: rgba(0,0,0,0.2);
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+            100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Музыка -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+    <source src="https://assets.mixkit.co/music/preview/mixkit-happy-times-158.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+    <div class="age-badge">👑 9-5 ЖАС 🎂</div>
+    <h1>Туған Күнге Шақыру!</h1>
+
+    <!-- Музыка батырмасы -->
+    <button onclick="toggleMusic()" class="music-btn">
+        🎵 <span id="musicText">Музыканы қосу</span>
+    </button>
+
+    <!-- Сурет -->
+    <div class="photo-frame">
+        <img src="photo.jpg" alt="Бала суреті">
+    </div>
+
+    <!-- Мәтін -->
+    <div class="text-body">
+        <p>Құрметті ағайын-туыс, бауырлар,<br>дос-жарандар мен кішкентай достар!</p>
+        <p>Байлығымыз, ерке қыздарымыз</p>
+        <span class="child-name">Дария,Сания</span>
+        <p>толағай <strong> жасқа</strong> толып отыр! Осы қуанышты мерекеде ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!</p>
+    </div>
+
+   <!-- Күні мен Мекенжайы -->
+<div class="info-card">
+    <div class="info-item">📅 <strong>Күні:</strong> 05 Қыркүйек 2026 жыл</div>
+    <div class="info-item">⏰ <strong>Уақыты:</strong> 17:00</div>
+    <div class="info-item">📍 <strong>Мекен-жайы:</strong> Сарқан қаласы,<br>Төлеген Тоқтаров, 39 үй</div>
+</div>
+
+    <!-- Таймер -->
+    <div class="timer-title">Мерекеге қалды:</div>
+    <div class="timer">
+        <div class="timer-block"><span class="timer-number" id="days">00</span><span class="timer-label">Күн</span></div>
+        <div class="timer-block"><span class="timer-number" id="hours">00</span><span class="timer-label">Сағат</span></div>
+        <div class="timer-block"><span class="timer-number" id="minutes">00</span><span class="timer-label">Минут</span></div>
+        <div class="timer-block"><span class="timer-number" id="seconds">00</span><span class="timer-label">Секунд</span></div>
+    </div>
+
+    <!-- Навигация -->
+    <a href="https://maps.google.com" target="_blank" class="btn">🗺️ Google Maps арқылы ашу</a>
+    <a href="https://2gis.kz" target="_blank" class="btn btn-2gis">🌐 2GIS арқылы ашу</a>
+
+    <!-- Байланыс -->
+    <div class="contacts-box">
+        <a href="tel:+77000000000" class="phone-btn">📞 Ата-анасымен байланыс: +7 700 2746834</a>
+    </div>
+
+    <!-- WhatsApp Сауалнама -->
+    <div class="rsvp-box">
+        <h3>Жауабыңызды қалдырыңыз</h3>
+        <div class="form-group">
+            <label>Аты-жөніңіз:</label>
+            <input type="text" id="guestName" placeholder="Мысалы: Арман аға мен Аружан апай">
+        </div>
+        <div class="form-group">
+            <label>Мерекеге келесіз бе?</label>
+            <select id="attendance">
+                <option value="Міндетті түрде келеміз!">Міндетті түрде келеміз!</option>
+                <option value="Балалармен бірге келеміз">Балалармен бірге келеміз</option>
+                <option value="Өкінішке орай, келе алмаймыз">Өкінішке орай, келе алмаймыз</option>
+            </select>
+        </div>
+        <button class="btn" onclick="sendRSVP()" style="margin-bottom:0;">📲 WhatsApp арқылы растау</button>
+    </div>
+</div>
+
+<script>
+    // 1. Музыка басқару
+    function toggleMusic() {
+        const music = document.getElementById("bgMusic");
+        const musicText = document.getElementById("musicText");
+        
+        if (music.paused) {
+            music.play().then(() => {
+                musicText.innerText = "Музыканы өшіру";
+            }).catch(error => {
+                music.src = "https://assets.mixkit.co/music/preview/mixkit-happy-times-158.mp3";
+                music.play();
+                musicText.innerText = "Музыканы өшіру";
+            });
+        } else {
+            music.pause();
+            musicText.innerText = "Музыканы қосу";
+        }
+    }
+
+    // 2. Таймер (Мереке күні)
+    const eventDate = new Date("Oct 15, 2026 17:00:00").getTime();
+    setInterval(function() {
+        const now = new Date().getTime();
+        const diff = eventDate - now;
+
+        if (diff > 0) {
+            document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("minutes").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000);
+        }
+    }, 1000);
+
+    // 3. WhatsApp RSVP
+    function sendRSVP() {
+        const name = document.getElementById("guestName").value.trim();
+        const status = document.getElementById("attendance").value;
+        const myPhone = "77002746834"; // Осы жерге телефон нөмірін жазыңыз
+
+        if (!name) {
+            alert("Өтініш, аты-жөніңізді енгізіңіз!");
+            return;
+        }
+
+        const text = `Сәлеметсіз бе! Менің атым: ${name}. Туған күнге шақыру бойынша жауабым: ${status}.`;
+        window.open(`https://wa.me/${myPhone}?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    // 4. Түрлі-түсті шарлар анимациясы
+    function createBalloon() {
+        const balloon = document.createElement('div');
+        balloon.classList.add('balloon');
+        balloon.style.left = Math.random() * 100 + 'vw';
+        balloon.style.animationDuration = Math.random() * 4 + 6 + 's';
+        
+        const size = Math.random() * 20 + 25;
+        balloon.style.width = size + 'px';
+        balloon.style.height = (size * 1.2) + 'px';
+        
+        const colors = ['#ff477e', '#ff9a9e', '#ffc0cb', '#4dabf7', '#ffd43b', '#b197fc'];
+        balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        document.body.appendChild(balloon);
+        setTimeout(() => { balloon.remove(); }, 9000);
+    }
+    setInterval(createBalloon, 500);
+</script>
+
+</body>
+</html>
